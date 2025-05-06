@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Treats Bakery</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefae0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #b83b5e;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 40px 0 20px;
+      color: #b83b5e;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      color: #b83b5e;
+      font-weight: bold;
+    }
+
+    .btn-custom {
+      background-color: #b83b5e;
+      color: white;
+    }
+
+    .btn-custom:hover {
+      background-color: #6a0572;
+    }
+
+    footer {
+      background-color: #b83b5e;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+
+    #cart-count {
+      background-color: white;
+      color: #f272a7; /* Match the homepage's basket color */
+      padding: 3px 8px;
+      border-radius: 50%;
+      font-weight: bold;
+      
+    }
+
+    .bi-cart-dash-fill {
+      color: #f272a7; /* Match the homepage's color */
+    }
+
+    #cart-count:hover, .bi-cart-dash-fill:hover {
+      color: #ac225c; /* Hover color */
+    }
+    .list{
+        list-style-type: none; 
+    }
+    a:focus, a:active {
+  outline: none;
+  box-shadow: none;
+}
+.cart-link:focus,
+.cart-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+  </style>
+</head>
+<body>
+  
+
+  <header>
+    <h1>Eggless Cakes Menu</h1>
+    <a href="Order Summary.html" class="cart-link">
+        <i class="bi-cart-dash-fill"></i> <span id="cart-count">0</span>
+      </a>
+  </header>
+
+  <div class="container py-4">
+
+    <!-- Section 1 -->
+    <div class="section-title">Chocolate Cakes</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/choco1.jpg" class="card-img-top" alt="Chocolate Delight">
+          <div class="card-body">
+            <h5 class="card-title">Chocolate Delight</h5>
+            <p class="card-text">Rich and creamy chocolate cake perfect for every occasion!</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Chocolate Delight', 25)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/choco 2.jpg" class="card-img-top" alt="Black Forest">
+          <div class="card-body">
+            <h5 class="card-title">Black Forest</h5>
+            <p class="card-text">Decadent layers of chocolate and cherries, eggless and divine.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Black Forest', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/chock 3.jpg" class="card-img-top" alt="Coffee Craze">
+          <div class="card-body">
+            <h5 class="card-title">Coffee Craze</h5>
+            <p class="card-text">Eggless coffee cake for all caffeine lovers with a creamy finish.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Coffee Craze', 20)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section-title">Fruity Cakes</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/pinaple 1.jpg" class="card-img-top" alt="Pineapple Bliss">
+          <div class="card-body">
+            <h5 class="card-title">Pineapple Bliss</h5>
+            <p class="card-text">Refreshing pineapple flavor with juicy bits and soft cake base.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Pineapple Bliss', 28)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/Mango-Cake-1.jpg" class="card-img-top" alt="Mango Magic">
+          <div class="card-body">
+            <h5 class="card-title">Mango Magic</h5>
+            <p class="card-text">Seasonal mango cake bursting with tropical flavors and freshness.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Mango Magic', 32)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/vegan-strawberry-cake-1-1.jpg" class="card-img-top" alt="Strawberry Sensation">
+          <div class="card-body">
+            <h5 class="card-title">Strawberry Sensation</h5>
+            <p class="card-text">Fresh strawberry cake topped with real fruit and cream.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Strawberry Sensation', 22)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section-title">Classic & Specials</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/vanilla cake.jpeg" class="card-img-top" alt="Vanilla Swirl">
+          <div class="card-body">
+            <h5 class="card-title">Vanilla Swirl</h5>
+            <p class="card-text">Classic vanilla flavor with a soft and spongy texture.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Vanilla Swirl', 18)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/red velvet 4.jpg" class="card-img-top" alt="Red Velvet">
+          <div class="card-body">
+            <h5 class="card-title">Red Velvet</h5>
+            <p class="card-text">A luscious red velvet cake with smooth cream cheese frosting.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Red Velvet', 35)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/Butter-Scotch-cake-2.jpg" class="card-img-top" alt="Butterscotch Fantasy">
+          <div class="card-body">
+            <h5 class="card-title">Butterscotch Fantasy</h5>
+            <p class="card-text">Rich butterscotch flavor with crunchy caramel toppings.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Butterscotch Fantasy', 40)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; Shree Bakery</p>
+  </footer>
+
+  <!-- Basket Script -->
+  <script>
+    const basket = JSON.parse(localStorage.getItem("basket")) || [];
+    const cartCount = basket.length;
+
+    // Update the cart count on page load
+    document.getElementById("cart-count").textContent = cartCount;
+
+    function addToCart(itemName, price) {
+      basket.push({ name: itemName, price: price });
+      localStorage.setItem("basket", JSON.stringify(basket));
+
+      // Update the cart count visually
+      document.getElementById("cart-count").textContent = basket.length;
+    }
+  </script>
+</body> 
+</html>

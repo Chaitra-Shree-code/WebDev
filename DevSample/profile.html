@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile - Shree Bakery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff5f8;
+      font-family: Arial, sans-serif;
+    }
+
+    .profile-card {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .profile-card h3 {
+      color: #ac225c;
+    }
+
+    .list-group-item {
+      border: none;
+      border-bottom: 1px solid #f2d4df;
+      cursor: pointer;
+    }
+
+    .list-group-item:hover {
+      background-color: #fce8f1;
+    }
+
+    .logout {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-card">
+    <div class="text-center mb-4">
+      <i class="bi bi-person-circle" style="font-size: 60px; color: #ac225c;"></i>
+      <h3>Welcome</h3>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item"><i class="bi bi-person"></i> My Profile</li>
+      <li class="list-group-item"><i class="bi bi-gear"></i> Settings</li>
+      <li class="list-group-item"><i class="bi bi-bag"></i> Order History</li>
+      <li class="list-group-item"><i class="bi bi-geo-alt"></i> Address</li>
+      <li class="list-group-item"><i class="bi bi-question-circle"></i> Help</li>
+      <li class="list-group-item logout"><i class="bi bi-box-arrow-right"></i> Log Out</li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

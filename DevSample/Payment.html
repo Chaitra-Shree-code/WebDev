@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <style>
+    body {
+      background-color: #fff0f6;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .payment-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid #f272a7;
+    }
+
+    h2 {
+      color: #ac225c;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .payment-option {
+      border: 1px solid #f272a7;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .payment-option:hover {
+      background-color: #fdf0f5;
+    }
+
+    .payment-option i {
+      font-size: 24px;
+      color: #ac225c;
+      margin-right: 15px;
+    }
+
+    .active-option {
+      background-color: #fde6f0;
+    }
+
+    .payment-form {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .btn-pay {
+      background-color: #ac225c;
+      color: white;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .btn-pay:hover {
+      background-color: #901c4c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-container">
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-option" onclick="selectPayment('Credit Card')">
+      <i class="bi bi-credit-card-2-front-fill"></i> Credit Card
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('Debit Card')">
+      <i class="bi bi-credit-card-fill"></i> Debit Card
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('UPI')">
+      <i class="bi bi-wallet-fill"></i> UPI
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('Google Pay')">
+      <i class="bi bi-google"></i> Google Pay
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('PhonePe')">
+      <i class="bi bi-phone-fill"></i> PhonePe
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('Paytm')">
+      <i class="bi bi-paypal"></i> Paytm
+    </div>
+
+    <div class="payment-form" id="payment-form">
+      <!-- Dynamic form fields will be inserted here -->
+    </div>
+
+    <button class="btn-pay" onclick="proceedToPay()">Proceed to Pay</button>
+  </div>
+
+  <script>
+    let selectedPayment = "";
+
+    function selectPayment(method) {
+      selectedPayment = method;
+
+      // Remove highlight from all options
+      document.querySelectorAll(".payment-option").forEach(el => el.classList.remove("active-option"));
+
+      // Highlight selected option
+      event.currentTarget.classList.add("active-option");
+
+      const formContainer = document.getElementById("payment-form");
+      let formHTML = "";
+
+      if (method === "Credit Card" || method === "Debit Card") {
+        formHTML = `
+          <div class="mb-3">
+            <label class="form-label">Card Number</label>
+            <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Name on Card</label>
+            <input type="text" class="form-control" placeholder="John Doe">
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Expiry</label>
+              <input type="text" class="form-control" placeholder="MM/YY">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">CVV</label>
+              <input type="password" class="form-control" placeholder="123">
+            </div>
+          </div>
+        `;
+      } else if (method === "UPI" || method === "Google Pay" || method === "PhonePe" || method === "Paytm") {
+        formHTML = `
+          <div class="mb-3">
+            <label class="form-label">${method} UPI ID</label>
+            <input type="text" class="form-control" placeholder="example@upi">
+          </div>
+        `;
+      }
+
+      formContainer.innerHTML = formHTML;
+      formContainer.style.display = "block";
+    }
+
+    function proceedToPay() {
+      if (!selectedPayment) {
+        alert("Please select a payment method.");
+        return;
+      }
+      alert("Proceeding with " + selectedPayment + " payment.");
+      // Add payment gateway logic or success screen redirection here
+    }
+  </script>
+
+</body>
+</html>

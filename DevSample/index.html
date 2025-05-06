@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Treats Bakery</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!-- ✅ FIXED: Use CDN for Bootstrap Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fdf6f0;
+    }
+
+    header {
+      background-color: #ac225c;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #ac225c;
+      margin: 0;
+    }
+
+    .nav-list li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    .nav-list a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #f272a7;
+      border-radius: 5px;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li a {
+      color: white;
+      padding: 10px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      width: 250px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .cardBody {
+      padding: 15px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #de85aa;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f57daf;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f969a5;
+      color: white;
+    }
+
+    #cart-count {
+      background: white;
+      color: #f272a7;
+      padding: 3px 8px;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .booking-button {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .custom-booking-btn {
+      background-color: #ac225c;
+      color: white;
+    }
+
+    .custom-booking-btn:hover {
+      background-color: #901c4c;
+    }
+
+    .basket-section {
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      background: #fff0f6;
+      border: 1px solid #f272a7;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .basket-section h3 {
+      color: #ac225c;
+      margin-bottom: 10px;
+    }
+
+    .basket-item {
+      border-bottom: 1px solid #f272a7;
+      padding: 5px 0;
+    }
+
+    .bi-basket-fill { /* ✅ FIXED selector */
+        color: #f272a7;
+        background-color: #de85aa;
+    }
+
+    .itemsname {
+        text-align: center;
+        color: #ac225c;
+        font-size: 30px;
+        margin-top: 20px; 
+    }
+    .head{
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    
+    
+    <h1 class="head">Shree Bakery</h1>
+    <nav>
+      <ul class="nav-list">
+        
+        <li class="dropdown">
+          <a href="#">Home</a>
+          <ul class="dropdown-menu">
+            <li><a href="welcome.html">Welcome</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Menu</a>
+          <ul class="dropdown-menu">
+            <li><a href="cakes.html">Cakes</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+  <a href="contact-form.html">Contact</a>
+  <ul class="dropdown-menu">
+    <li><a href="contact-form.html">Contact Form</a></li>
+  </ul>
+</li>
+
+<li style="position: relative; display: flex; align-items: center;">
+  <div style="position: relative;">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search items..."
+      style="padding: 6px 30px 6px 35px; border-radius: 5px; border: none; width: 350px;"
+    />
+    <i class="bi bi-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999;"></i>
+  </div>
+</li>
+
+<li>
+  <a href="Order Summary.html"><i class="bi bi-cart-dash-fill"></i> <span id="cart-count">0</span></a>
+</li>
+<li style="margin-left: 300px;">
+  <a href="profile.html" title="Your Profile">
+    <i class="bi bi-person-circle" style="font-size: 1.3rem;"></i>
+  </a>
+</li>
+
+
+
+    </nav>
+  </header>
+
+<!-- The rest of your code continues unchanged -->
+<!-- ... -->
+
+  
+    <h5 class="itemsname">Cakes</h5>
+  
+      
+  <section class="cards">
+    <div class="card">
+      <img src= "./images/Chocolate-Strawberry-Cake.jpg" alt="Chocolate Cake">
+      <div class="cardBody">
+        <h3>Chocolate Cake</h3>
+        <p>1,340.00Rs</p>
+        <button onclick="addToCart('Chocolate Cake', '1,340.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/vanilla cake.jpeg" alt="Vanilla Cake">
+      <div class="cardBody">
+        <h3>Vanilla Cake</h3>
+        <p>1,280.00Rs</p>
+        <button onclick="addToCart('Vanilla Cake', '1,280.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/Strawberry cake.jpg" alt="Strawberry Cake">
+      <div class="cardBody">
+        <h3>Strawberry Cake</h3>
+        <p>1,390.00Rs</p>
+        <button onclick="addToCart('Strawberry Cake', '1,390.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/EgglessRedVelvetCake1.webp" alt="Red Velvet">
+      <div class="cardBody">
+        <h3>Red Velvet</h3>
+        <p>1,599.00Rs</p>
+        <button onclick="addToCart('Red Velvet', '1,599.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+   </section>
+  <h5 class="itemsname">Cookies</h5>
+  <section class="cards">
+    <div class="card">
+      <img src= "./images/chocolate-lovers-tin-300x300.png" alt="Chocolate Cake">
+      <div class="cardBody">
+        <h3>Chocolate Cookies</h3>
+        <p>700.00Rs</p>
+        <button onclick="addToCart('Chocolate Cake', '700.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/gluten-free-tin.png" alt="Vanilla Cake">
+      <div class="cardBody">
+        <h3>Vanilla Cookies</h3>
+        <p>400.00Rs</p>
+        <button onclick="addToCart('Vanilla Cake', '400.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/CUstom Cookies.png" alt="Strawberry Cake">
+      <div class="cardBody">
+        <h3>Almond Cookies</h3>
+        <p>400.00Rs</p>
+        <button onclick="addToCart('Almond Cookies', '400.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/kooki.png" alt="Red Velvet">
+      <div class="cardBody">
+        <h3>Custom Cookies</h3>
+        <p>1,500.00Rs</p>
+        <button onclick="addToCart('Custom Cookies', '1,500.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+   
+     
+  </section>
+
+  <h5 class="itemsname">Breads</h5>
+  <section class="cards">
+    <div class="card">
+      <img src= "./images/bread 1.jpg" alt="Chocolate Cake">
+      <div class="cardBody">
+        <h3>Sourdough Bread</h3>
+        <p>250.00Rs</p>
+        <button onclick="addToCart('Sourdough Bread', '250.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/bread 2.jpeg" alt="Vanilla Cake">
+      <div class="cardBody">
+        <h3>Vanilla Cream Bun</h3>
+        <p>360.00Rs</p>
+        <button onclick="addToCart('Vanilla Cream Bun', '360.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/20210224_125231-01-scaled-e1614605357202.webp" alt="Strawberry Cake">
+      <div class="cardBody">
+        <h3>Whole Wheat Bread</h3>
+        <p>400.00Rs</p>
+        <button onclick="addToCart('Whole Wheat Bread', '400.00Rs')">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./images/bread4.jpeg" alt="Red Velvet">
+      <div class="cardBody">
+        <h3> Multigrain Bread</h3>
+        <p>700.00Rs</p>
+        <button onclick="addToCart('Multigrain Bread', '700.00Rs')">Add to Cart</button>
+      </div>
+    </div>f
+   
+     
+  </section>
+  
+  
+  
+
+
+  <div class="booking-button">
+    <button type="button" class="btn custom-booking-btn" data-bs-toggle="modal" data-bs-target="#bookingModal">
+      Cake Booking
+    </button>
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Quick Booking</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="bookingForm">
+            <div class="mb-3">
+              <label for="item" class="form-label">Select Item</label>
+              <select class="form-select" id="item">
+                <option selected disabled>Choose...</option>
+                <option>Cake</option>
+                <option>Pastry</option>
+                <option>Bread</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" id="quantity" min="1" />
+            </div>
+            <div class="mb-3">
+              <label for="date" class="form-label">Select Date</label>
+              <input type="date" class="form-control" id="date" />
+            </div>
+            <div class="mb-3">
+              <label for="time" class="form-label">Select Time</label>
+              <input type="time" class="form-control" id="time" />
+            </div>
+          </form>
+          <div id="summary" class="alert alert-info d-none"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="showSummary()">Book Now</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; Shree Bakery</p>
+  </footer>
+
+  <script>
+    let count = 0;
+    const basket = [];
+
+    function addToCart(itemName, price) {
+      count++;
+      document.getElementById("cart-count").textContent = count;
+
+      basket.push({ name: itemName, price: price });
+      updateBasket();
+    }
+
+    
+
+    function removeFromBasket(index) {
+      basket.splice(index, 1);
+      count--;
+      document.getElementById("cart-count").textContent = count;
+      updateBasket();
+    }
+
+    function showSummary() {
+      const item = document.getElementById('item').value;
+      const quantity = document.getElementById('quantity').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      if (!item || !quantity || !date || !time) {
+        alert("Please fill in all booking details!");
+        return;
+      }
+
+      const summaryDiv = document.getElementById('summary');
+      summaryDiv.innerHTML = `
+        <strong>Booking Summary:</strong><br>
+        🧁 Item: ${item}<br>
+        🪑 Quantity: ${quantity}<br>
+        📅 Date: ${date}<br>
+        ⏰ Time: ${time}
+      `;
+      summaryDiv.classList.remove('d-none');
+    }
+    
+  // Save basket to localStorage when adding an item
+  function addToCart(itemName, price) {
+    count++;
+    document.getElementById("cart-count").textContent = count;
+
+    basket.push({ name: itemName, price: price });
+    localStorage.setItem("basket", JSON.stringify(basket));
+  }
+  // 🔍 Dynamic Search Functionality
+document.getElementById("searchInput").addEventListener("input", function () {
+  const query = this.value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    if (title.includes(query)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+
+
+
+    </script>
+  </body>
+  </html>

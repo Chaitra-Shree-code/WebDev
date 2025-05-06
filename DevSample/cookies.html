@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Treats Bakery - Eggless Cookies</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefae0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #b83b5e;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 40px 0 20px;
+      color: #b83b5e;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      color: #b83b5e;
+      font-weight: bold;
+    }
+
+    .btn-custom {
+      background-color: #b83b5e;
+      color: white;
+    }
+
+    .btn-custom:hover {
+      background-color: #6a0572;
+    }
+
+    footer {
+      background-color: #b83b5e;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Eggless Cookies Menu</h1>
+  </header>
+
+  <div class="container py-4">
+
+    <!-- Section 1 -->
+    <div class="section-title">Classic Cookies</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/chocolate-chip-cookies.jpg" class="card-img-top" alt="Choco Chip Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Choco Chip Cookies</h5>
+            <p class="card-text">Crunchy on the outside, gooey inside with loads of chocolate chips.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Choco Chip Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/coockie 3.jpg" class="card-img-top" alt="Butter Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Butter Cookies</h5>
+            <p class="card-text">Melt-in-mouth buttery goodness with a golden crust.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Butter Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/cookies 6.jpg" class="card-img-top" alt="Almond Delight">
+          <div class="card-body">
+            <h5 class="card-title">Almond Delight</h5>
+            <p class="card-text">Eggless almond cookies with a nutty crunch and soft core.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Almond Delight')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section-title">Fruity Cookies</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/jam fruit cookies.jpg" class="card-img-top" alt="Jam Center Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Jam Center Cookies</h5>
+            <p class="card-text">Sweet, soft cookies filled with vibrant strawberry jam.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Jam Center Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/cookies6.jpg" class="card-img-top" alt="Orange Zest Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Orange Zest Cookies</h5>
+            <p class="card-text">Zingy orange-flavored cookies perfect for citrus lovers.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Orange Zest Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/gluten-free-tin.png" class="card-img-top" alt="Fig & Honey Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Fig & Honey Cookies</h5>
+            <p class="card-text">Sweet figs blended with honey in soft, chewy cookies.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Fig & Honey Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section-title">Assorted Specials</div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/istockphoto-941695046-1024x1024.jpg" class="card-img-top" alt="Peanut Butter Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Peanut Butter Cookies</h5>
+            <p class="card-text">Smooth peanut butter baked into delicious, protein-rich cookies.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Peanut Butter Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/kooki.png" class="card-img-top" alt="Oats Raisin Cookies">
+          <div class="card-body">
+            <h5 class="card-title">Oats Raisin Cookies</h5>
+            <p class="card-text">Hearty oats combined with sweet raisins for a wholesome bite.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Oats Raisin Cookies')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./images/assortment-baked-goods-displayed-on-600nw-2575371219.webp" class="card-img-top" alt="Coconut Crunch">
+          <div class="card-body">
+            <h5 class="card-title">Coconut Crunch</h5>
+            <p class="card-text">Eggless cookies with toasted coconut flakes and crisp edges.</p>
+            <button class="btn btn-custom w-100" onclick="addToCart('Coconut Crunch')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; Shree Bakery</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Basket Script -->
+  <script>
+    let cartCount = 0;
+    const cartItems = [];
+
+    function addToCart(name = 'Item') {
+      cartCount++;
+      cartItems.push(name);
+      alert(`${name} added to cart!`);
+    }
+  </script>
+</body>
+</html>
